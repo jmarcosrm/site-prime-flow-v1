@@ -214,7 +214,6 @@ const Home = () => {
         <div className="container mx-auto max-w-6xl px-4 md:px-6 mb-12">
           <SectionHeading 
             title="Três soluções centrais, combináveis" 
-            description="Role para descobrir como cada frente acelera sua operação."
           />
         </div>
         <div className="container mx-auto px-4 md:px-6">
