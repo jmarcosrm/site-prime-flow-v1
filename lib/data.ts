@@ -176,16 +176,46 @@ export const stats = [
 
 export const testimonials = [
   {
-    quote: "Tiramos processos do manual e ganhamos previsibilidade. A operação ficou mais leve e controlável.",
-    author: "Diretora de Operações"
+    name: 'Elena Fisher',
+    username: '@elena_tech',
+    body: 'A latência caiu 40% na primeira semana de deploy.',
+    img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100&h=100',
+    role: 'CTO, FinBank',
   },
   {
-    quote: "Integração foi o divisor de águas. Em pouco tempo, dados e execução começaram a conversar.",
-    author: "Head de Tecnologia"
+    name: 'Marcus Chen',
+    username: '@chen_ops',
+    body: 'Dashboard em tempo real mudou nossa logística.',
+    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100&h=100',
+    role: 'Head of Ops, LogiCorp',
   },
   {
-    quote: "Atendimento ficou mais rápido sem perder qualidade. E o time recuperou foco no estratégico.",
-    author: "Gerente de Experiência do Cliente"
+    name: 'Sarah Miller',
+    username: '@sarah_m',
+    body: 'Governança de dados impecável.',
+    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100&h=100',
+    role: 'CISO, SecureNet',
+  },
+  {
+    name: 'David Park',
+    username: '@dpark_ai',
+    body: 'A integração com legado foi surpreendentemente suave.',
+    img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100&h=100',
+    role: 'VP Eng, RetailGiant',
+  },
+  {
+    name: 'Jessica Wu',
+    username: '@jess_product',
+    body: 'ROI visível em menos de 30 dias.',
+    img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=100&h=100',
+    role: 'Product Lead, TechFlow',
+  },
+  {
+    name: 'Robert Fox',
+    username: '@rob_fox',
+    body: 'Automação que realmente escala.',
+    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100&h=100',
+    role: 'Director, ManuFact',
   }
 ];
 
@@ -245,7 +275,7 @@ export const solutionTabs = {
   },
   nlp: {
     title: "PLN",
-    summary: "Texto e conversa viram ação: triagem, suporte, classificação e insights.",
+    summary: "Texto e conversa viram ação: triagem, suporte e classificação e insights.",
     grid: [
       { title: "Assistentes", desc: "Respostas com contexto e fluxos definidos." },
       { title: "Classificação", desc: "Tickets, e-mails e mensagens categorizados automaticamente." },

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Section, SectionHeading } from '../components/section';
 import { Reveal } from '../components/reveal';
 import { StepsTimeline } from '../components/steps-timeline';
@@ -17,15 +17,19 @@ const heroImages = [
 ];
 
 const About = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const heroRef = useRef<HTMLDivElement>(null);
   const [currentBg, setCurrentBg] = useState(0);
 
+  // PERFORMANCE FIX: Use Ref for mouse movement
   useEffect(() => {
     let ticking = false;
     const handleMouseMove = (e: MouseEvent) => {
-      if (!ticking) {
+      if (!ticking && heroRef.current) {
         window.requestAnimationFrame(() => {
-          setMousePosition({ x: e.clientX, y: e.clientY });
+          if (heroRef.current) {
+            heroRef.current.style.setProperty('--mouse-x', `${e.clientX}px`);
+            heroRef.current.style.setProperty('--mouse-y', `${e.clientY}px`);
+          }
           ticking = false;
         });
         ticking = true;
@@ -48,7 +52,10 @@ const About = () => {
   return (
     <div className="flex flex-col">
       {/* --- HERO SECTION (PREMIUM & DYNAMIC) --- */}
-      <section className="relative min-h-[90vh] md:min-h-[85vh] flex flex-col justify-start pt-48 pb-20 md:pt-80 md:pb-32 px-4 md:px-10 overflow-hidden rounded-b-[2.5rem] md:rounded-b-[5rem] border-b border-white/5 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.7)] z-20 bg-black">
+      <section 
+        ref={heroRef}
+        className="relative min-h-[90vh] md:min-h-[85vh] flex flex-col justify-start pt-48 pb-20 md:pt-80 md:pb-32 px-4 md:px-10 overflow-hidden rounded-b-[2.5rem] md:rounded-b-[5rem] border-b border-white/5 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.7)] z-20 bg-black [--mouse-x:50%] [--mouse-y:50%]"
+      >
         
         {/* 1. Background Layers */}
         <div className="absolute inset-0 z-0 bg-black">
@@ -99,8 +106,8 @@ const About = () => {
                    transform: 'rotateX(60deg) scale(2.5) translateY(-100px)',
                    transformOrigin: 'top center',
                    height: '200%',
-                   maskImage: `radial-gradient(500px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
-                   WebkitMaskImage: `radial-gradient(500px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
+                   maskImage: `radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), black, transparent)`,
+                   WebkitMaskImage: `radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), black, transparent)`,
                 }} 
               />
            </div>

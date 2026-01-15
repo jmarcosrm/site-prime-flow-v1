@@ -2,12 +2,34 @@
 <html lang="pt-BR" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sua Marca | Automação e IA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
+    <!-- Performance Optimization: Preconnect to Image CDNs -->
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://i.im.ge" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- SEO & Meta -->
+    <title>Sua Marca | Automação e IA para Empresas</title>
+    <meta name="description" content="Plataforma institucional premium especializada em Inteligência Artificial, Automação de Processos e Governança de Dados. Transforme sua operação." />
+    <meta name="keywords" content="IA, Automação, Enterprise, Governança, Dados, Tecnologia, Software" />
+    <meta name="author" content="Sua Marca Inc." />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sua Marca | Automação e IA" />
+    <meta property="og:description" content="Engenharia de elite para problemas complexos. Escapamos do hype para entregar resultados mensuráveis." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Config -->
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -27,7 +49,8 @@
               muted: "var(--muted)",
             },
             animation: {
-              marquee: 'marquee 60s linear infinite',
+              marquee: 'marquee var(--duration) linear infinite',
+              'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
               'marquee-reverse': 'marquee-reverse 60s linear infinite',
               scroll: 'scroll 60s linear infinite',
               float: 'float 6s ease-in-out infinite',
@@ -39,8 +62,12 @@
             },
             keyframes: {
               marquee: {
-                '0%': { transform: 'translateX(0%)' },
-                '100%': { transform: 'translateX(-100%)' },
+                'from': { transform: 'translateX(0)' },
+                'to': { transform: 'translateX(calc(-100% - var(--gap)))' },
+              },
+              'marquee-vertical': {
+                'from': { transform: 'translateY(0)' },
+                'to': { transform: 'translateY(calc(-100% - var(--gap)))' },
               },
               'marquee-reverse': {
                 '0%': { transform: 'translateX(-100%)' },
@@ -82,14 +109,15 @@
   <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "framer-motion": "https://esm.sh/framer-motion@^12.25.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+    "react": "https://esm.sh/react@18.3.1",
+    "react-dom/": "https://esm.sh/react-dom@18.3.1/",
+    "react/": "https://esm.sh/react@18.3.1/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0?deps=react@18.3.1",
+    "framer-motion": "https://esm.sh/framer-motion@^12.25.0?deps=react@18.3.1,react-dom@18.3.1",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0?deps=react@18.3.1,react-dom@18.3.1",
     "clsx": "https://esm.sh/clsx@^2.1.1",
-    "tailwind-merge": "https://esm.sh/tailwind-merge@^3.4.0"
+    "tailwind-merge": "https://esm.sh/tailwind-merge@^3.4.0",
+    "@radix-ui/react-avatar": "https://esm.sh/@radix-ui/react-avatar@^1.0.4?deps=react@18.3.1,react-dom@18.3.1"
   }
 }
 </script>

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Layers } from 'lucide-react';
 import { Section, SectionHeading } from '../components/section';
 import { Marquee } from '../components/marquee';
@@ -7,7 +7,7 @@ import { BentoGrid } from '../components/bento-grid';
 import { StackingCards } from '../components/stacking-cards';
 import { StepsTimeline } from '../components/steps-timeline';
 import { StatsStrip } from '../components/stats-strip';
-import { TestimonialSlider } from '../components/testimonial-slider';
+import { Testimonials3D } from '../components/testimonials-3d'; 
 import { FAQAccordion } from '../components/faq-accordion';
 import { Reveal } from '../components/reveal';
 import { CtaSection } from '../components/cta-section';
@@ -19,7 +19,6 @@ import {
   solutionsCarouselItems, 
   stepsHome, 
   stats, 
-  testimonials, 
   faqs 
 } from '../lib/data';
 import { Link } from 'react-router-dom';
@@ -31,27 +30,31 @@ const heroImages = [
 ];
 
 const Home = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  
   // Memoize data slices to prevent re-calculation on render
   const firstRow = integrations.slice(0, Math.ceil(integrations.length / 2));
   const secondRow = integrations.slice(Math.ceil(integrations.length / 2));
 
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [currentBg, setCurrentBg] = useState(0);
 
+  // PERFORMANCE FIX: Use Ref and CSS Variables instead of React State for mouse movement
+  // This prevents the entire Home component from re-rendering 60 times per second
   useEffect(() => {
-    // Throttled mouse move for performance
     let ticking = false;
     const handleMouseMove = (e: MouseEvent) => {
-      if (!ticking) {
+      if (!ticking && heroRef.current) {
         window.requestAnimationFrame(() => {
-          setMousePosition({ x: e.clientX, y: e.clientY });
+          if (heroRef.current) {
+            heroRef.current.style.setProperty('--mouse-x', `${e.clientX}px`);
+            heroRef.current.style.setProperty('--mouse-y', `${e.clientY}px`);
+          }
           ticking = false;
         });
         ticking = true;
       }
     };
     
-    // Only add listener on desktop to save battery on mobile
     if (window.matchMedia("(min-width: 768px)").matches) {
       window.addEventListener("mousemove", handleMouseMove);
     }
@@ -69,7 +72,10 @@ const Home = () => {
   return (
     <div className="flex flex-col">
       {/* --- HERO SECTION REDESIGNED --- */}
-      <section className="relative min-h-[90vh] md:min-h-[95vh] flex flex-col justify-start pt-48 pb-20 md:pt-80 md:pb-32 px-4 md:px-10 overflow-hidden rounded-b-[2.5rem] md:rounded-b-[5rem] border-b border-white/5 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.7)] z-20 bg-black">
+      <section 
+        ref={heroRef}
+        className="relative min-h-[90vh] md:min-h-[95vh] flex flex-col justify-start pt-48 pb-20 md:pt-80 md:pb-32 px-4 md:px-10 overflow-hidden rounded-b-[2.5rem] md:rounded-b-[5rem] border-b border-white/5 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.7)] z-20 bg-black [--mouse-x:50%] [--mouse-y:50%]"
+      >
         
         {/* 1. Background Layers */}
         <div className="absolute inset-0 z-0 bg-black">
@@ -107,7 +113,7 @@ const Home = () => {
            {/* Grain Overlay */}
            <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
 
-           {/* 3D Perspective Grid */}
+           {/* 3D Perspective Grid - Optimized to use CSS variables */}
            <div 
              className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none mix-blend-overlay"
              style={{ perspective: '1000px' }}
@@ -120,8 +126,8 @@ const Home = () => {
                    transform: 'rotateX(60deg) scale(2.5) translateY(-100px)',
                    transformOrigin: 'top center',
                    height: '200%',
-                   maskImage: `radial-gradient(500px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
-                   WebkitMaskImage: `radial-gradient(500px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
+                   maskImage: `radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), black, transparent)`,
+                   WebkitMaskImage: `radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), black, transparent)`,
                 }} 
               />
            </div>
@@ -283,7 +289,15 @@ const Home = () => {
       <Section>
         <SectionHeading title="O que líderes buscam quando adotam IA de verdade" />
         <Reveal width="100%">
-          <TestimonialSlider items={testimonials} />
+          <div className="space-y-12">
+             {/* New 3D Testimonials Integration replacing the old slider */}
+             <div>
+                <p className="text-center text-sm text-neutral-500 uppercase tracking-widest font-mono mb-8">
+                   Feedback em tempo real
+                </p>
+                <Testimonials3D />
+             </div>
+          </div>
         </Reveal>
       </Section>
 
