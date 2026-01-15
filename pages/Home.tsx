@@ -38,8 +38,6 @@ const Home = () => {
 
   const [currentBg, setCurrentBg] = useState(0);
 
-  // PERFORMANCE FIX: Use Ref and CSS Variables instead of React State for mouse movement
-  // This prevents the entire Home component from re-rendering 60 times per second
   useEffect(() => {
     let ticking = false;
     const handleMouseMove = (e: MouseEvent) => {
@@ -55,6 +53,7 @@ const Home = () => {
       }
     };
     
+    // Enable mouse move effect on desktop only for performance
     if (window.matchMedia("(min-width: 768px)").matches) {
       window.addEventListener("mousemove", handleMouseMove);
     }
@@ -71,16 +70,16 @@ const Home = () => {
 
   return (
     <div className="flex flex-col">
-      {/* --- HERO SECTION REDESIGNED --- */}
+      {/* --- HERO SECTION --- */}
       <section 
         ref={heroRef}
-        className="relative min-h-[90vh] md:min-h-[95vh] flex flex-col justify-start pt-48 pb-20 md:pt-80 md:pb-32 px-4 md:px-10 overflow-hidden rounded-b-[2.5rem] md:rounded-b-[5rem] border-b border-white/5 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.7)] z-20 bg-black [--mouse-x:50%] [--mouse-y:50%]"
+        className="relative min-h-[90vh] md:min-h-[95vh] flex flex-col justify-center md:justify-start pt-24 pb-20 md:pt-80 md:pb-32 px-4 md:px-10 overflow-hidden rounded-b-[2.5rem] md:rounded-b-[5rem] border-b border-white/5 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.7)] z-20 bg-black [--mouse-x:50%] [--mouse-y:50%]"
       >
         
         {/* 1. Background Layers */}
         <div className="absolute inset-0 z-0 bg-black">
            
-           {/* IMAGE SLIDER LAYER - USING IMG TAGS FOR BETTER LCP */}
+           {/* IMAGE SLIDER LAYER */}
            {heroImages.map((img, index) => (
              <div 
                key={index}
@@ -90,7 +89,7 @@ const Home = () => {
                   src={img} 
                   alt="Hero Background" 
                   className="w-full h-full object-cover"
-                  priority={index === 0} // Prioritize first image loading
+                  priority={index === 0} 
                />
              </div>
            ))}
@@ -98,7 +97,7 @@ const Home = () => {
            <div className="absolute inset-0 bg-black/50 md:bg-black/40" />
            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/90" />
 
-           {/* Floating Ambient Orbs - Hardware Accelerated */}
+           {/* Floating Ambient Orbs */}
            <motion.div 
              className="absolute top-1/4 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-accent/10 rounded-full blur-[80px] md:blur-[120px] mix-blend-screen will-change-transform"
              animate={{ x: [0, 50, 0], y: [0, -50, 0], scale: [1, 1.2, 1] }}
@@ -113,17 +112,19 @@ const Home = () => {
            {/* Grain Overlay */}
            <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
 
-           {/* 3D Perspective Grid - Optimized to use CSS variables */}
+           {/* 3D Perspective Grid - NOW ENABLED ON MOBILE (Removed hidden md:block) */}
+           {/* Adjusted scale for mobile to avoid extreme distortion */}
            <div 
-             className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none mix-blend-overlay"
+             className="absolute inset-0 overflow-hidden pointer-events-none mix-blend-overlay"
              style={{ perspective: '1000px' }}
            >
               <div 
-                className="absolute inset-0 opacity-40 transition-opacity duration-200 will-change-transform"
+                className="absolute inset-0 opacity-30 md:opacity-40 transition-opacity duration-200 will-change-transform"
                 style={{ 
                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)', 
                    backgroundSize: '60px 60px',
-                   transform: 'rotateX(60deg) scale(2.5) translateY(-100px)',
+                   /* Mobile-friendly transform: less rotation, less scale */
+                   transform: 'rotateX(60deg) scale(1.5) md:scale(2.5) translateY(-50px) md:translateY(-100px)',
                    transformOrigin: 'top center',
                    height: '200%',
                    maskImage: `radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), black, transparent)`,
@@ -173,7 +174,7 @@ const Home = () => {
           </Reveal>
 
           <Reveal width="100%" delay={0.2}>
-            <p className="text-base sm:text-lg md:text-2xl text-neutral-300 max-w-3xl mb-10 md:mb-16 leading-relaxed font-light drop-shadow-lg text-left">
+            <p className="text-lg sm:text-lg md:text-2xl text-neutral-300 max-w-3xl mb-10 md:mb-16 leading-relaxed font-light drop-shadow-lg text-left">
               Integramos sistemas, automatizamos processos e colocamos dados para trabalhar. <span className="text-white font-normal">Da estratégia ao deploy</span>, com governança absoluta.
             </p>
           </Reveal>
@@ -182,12 +183,12 @@ const Home = () => {
             <div className="flex items-center justify-start">
               <Link 
                 to="/solucoes" 
-                className="group relative inline-flex items-center justify-center px-8 py-4 md:px-12 md:py-5 overflow-hidden rounded-full bg-white/5 border border-white/20 backdrop-blur-md transition-all duration-300 hover:border-accent/40 hover:shadow-[0_0_40px_rgba(255,122,0,0.15)] hover:bg-black/40"
+                className="group relative inline-flex items-center justify-center px-8 py-4 md:px-12 md:py-5 overflow-hidden rounded-full bg-white/5 border border-white/20 backdrop-blur-md transition-all duration-300 hover:border-accent/40 hover:shadow-[0_0_40px_rgba(255,122,0,0.15)] hover:bg-black/40 w-full md:w-auto"
               >
                 <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                <span className="relative z-10 flex items-center gap-3 md:gap-4 text-base md:text-lg font-bold text-white tracking-wide">
+                <span className="relative z-10 flex items-center justify-center gap-3 md:gap-4 text-base md:text-lg font-bold text-white tracking-wide">
                   Ver soluções
                   <span className="flex items-center justify-center w-6 h-6 md:w-8 md:h-8 rounded-full bg-white/10 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
                      <ArrowRight className="w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -205,7 +206,6 @@ const Home = () => {
           title="Entrega completa, do diagnóstico ao valor em produção"
           description="Não vendemos apenas software. Entregamos a transformação operacional que seu negócio precisa."
         />
-        {/* BentoGrid internally uses React.memo or simple components */}
         <BentoGrid items={bentoItems} />
       </Section>
 
@@ -222,10 +222,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Dashboard Preview */}
-      <div className="hidden md:block">
-        <DashboardPreview />
-      </div>
+      {/* Dashboard Preview - ENABLED ON MOBILE */}
+      {/* Removed the 'hidden md:block' wrapper */}
+      <DashboardPreview />
 
       {/* Marquee Section */}
       <div className="py-12 md:py-24 relative overflow-hidden">
@@ -290,7 +289,6 @@ const Home = () => {
         <SectionHeading title="O que líderes buscam quando adotam IA de verdade" />
         <Reveal width="100%">
           <div className="space-y-12">
-             {/* New 3D Testimonials Integration replacing the old slider */}
              <div>
                 <p className="text-center text-sm text-neutral-500 uppercase tracking-widest font-mono mb-8">
                    Feedback em tempo real

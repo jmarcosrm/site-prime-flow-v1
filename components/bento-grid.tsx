@@ -231,7 +231,8 @@ const VisualMap: Record<string, React.FC> = {
 
 export const BentoGrid = memo(({ items }: BentoGridProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[minmax(250px,auto)] md:auto-rows-[minmax(280px,auto)]">
+    // Increased mobile min-height from 250px to 300px to ensure visuals have space
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[minmax(300px,auto)] md:auto-rows-[minmax(280px,auto)]">
       {items.map((item, idx) => {
         const VisualComponent = item.id ? VisualMap[item.id] : null;
 

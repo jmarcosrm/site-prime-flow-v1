@@ -30,7 +30,7 @@ export const DashboardPreview = () => {
   return (
     <section 
       ref={containerRef} 
-      className="relative z-30 py-20 md:py-32 px-4 md:px-6 perspective-[2500px] bg-black overflow-hidden"
+      className="relative z-30 py-12 md:py-32 px-4 md:px-6 perspective-[2500px] bg-black overflow-hidden"
     >
       <div className="container mx-auto max-w-7xl relative z-30">
         <motion.div
@@ -56,7 +56,12 @@ export const DashboardPreview = () => {
              </div>
           </div>
 
-          <div className="relative pt-8 md:pt-12 bg-black rounded-[1rem] md:rounded-[2rem] overflow-hidden min-h-[250px] md:min-h-[600px]">
+          {/* 
+            Mobile Fix: Removed fixed min-h-[350px] which was forcing a square aspect ratio on mobile.
+            Added aspect-[16/10] to ensure the dashboard looks proportional (rectangular) on small screens.
+            Desktop keeps min-h-[600px] for grand scale.
+          */}
+          <div className="relative pt-8 md:pt-12 bg-black rounded-[1rem] md:rounded-[2rem] overflow-hidden aspect-[16/10] md:aspect-auto md:min-h-[600px]">
              
              {/* Optimized Image Loading */}
              <div className="relative z-10 w-full h-full">

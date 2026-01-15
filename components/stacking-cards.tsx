@@ -1,3 +1,4 @@
+
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Workflow, TrendingUp, BrainCircuit, Activity, ShoppingCart, Package, Mail, AlertCircle, MessageSquare, MapPin, Sparkles, Zap } from 'lucide-react';
@@ -246,7 +247,8 @@ const Card: React.FC<CardProps> = ({ i, title, description, bullets, progress, r
                </div>
             </div>
 
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-[1.05] tracking-tight text-white drop-shadow-lg">
+            {/* Bumped text size from 3xl to 4xl on mobile for punchier look */}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-[1.05] tracking-tight text-white drop-shadow-lg">
               {title}
             </h2>
             <p className="text-base md:text-xl text-[#888888] leading-relaxed mb-8 md:mb-10 max-w-md font-normal tracking-wide">
@@ -273,7 +275,7 @@ const Card: React.FC<CardProps> = ({ i, title, description, bullets, progress, r
           </div>
 
           {/* Right Content (High Fidelity Visual) */}
-          <div className="h-[250px] md:h-[350px] lg:h-[500px] w-full relative order-1 lg:order-2">
+          <div className="h-[300px] md:h-[350px] lg:h-[500px] w-full relative order-1 lg:order-2">
             {/* The Window Frame */}
             <div className={cn(
               "w-full h-full rounded-[20px] border border-white/[0.08] bg-[#050505] relative overflow-hidden shadow-2xl transition-all duration-700",
