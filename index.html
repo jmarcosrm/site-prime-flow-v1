@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sua Marca | Automação e IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            },
+            colors: {
+              background: "var(--bg)",
+              foreground: "var(--fg)",
+              accent: "var(--accent)",
+              "accent-foreground": "#ffffff",
+              card: "var(--card)",
+              "card-foreground": "var(--fg)",
+              border: "var(--border)",
+              muted: "var(--muted)",
+            },
+            animation: {
+              marquee: 'marquee 60s linear infinite',
+              'marquee-reverse': 'marquee-reverse 60s linear infinite',
+              scroll: 'scroll 60s linear infinite',
+              float: 'float 6s ease-in-out infinite',
+              'grid-flow': 'grid-flow 20s linear infinite',
+              'text-shimmer': 'text-shimmer 2.5s ease-out infinite alternate',
+              'shimmer': 'shimmer 2s linear infinite',
+              'spin-slow': 'spin-slow 60s linear infinite',
+              'spin-slow-reverse': 'spin-slow-reverse 60s linear infinite',
+            },
+            keyframes: {
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-100%)' },
+              },
+              'marquee-reverse': {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(0%)' },
+              },
+              scroll: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(calc(-100% - 1rem))' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-15px)' },
+              },
+              'grid-flow': {
+                '0%': { transform: 'translateY(0)' },
+                '100%': { transform: 'translateY(40px)' },
+              },
+              'text-shimmer': {
+                '0%': { 'background-position': '0% 50%' },
+                '100%': { 'background-position': '100% 50%' },
+              },
+              shimmer: {
+                '0%': { left: '-100%' },
+                '100%': { left: '200%' },
+              },
+              'spin-slow': {
+                'from': { transform: 'rotate(0deg)' },
+                'to': { transform: 'rotate(360deg)' },
+              },
+              'spin-slow-reverse': {
+                'from': { transform: 'rotate(0deg)' },
+                'to': { transform: 'rotate(-360deg)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.25.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+    "clsx": "https://esm.sh/clsx@^2.1.1",
+    "tailwind-merge": "https://esm.sh/tailwind-merge@^3.4.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
