@@ -1,106 +1,62 @@
 
-import { 
-  Bot, 
-  BrainCircuit, 
-  Database, 
-  BarChart3, 
-  ShieldCheck, 
-  Zap,
-  MessageSquareText,
-  Workflow,
-  LineChart,
-  Network,
-  Lightbulb,
-  TrendingUp,
-  Shield,
-  Target,
-  Building2,
-  Users,
-  MessageCircle,
-  Mail,
-  FileSpreadsheet,
-  Globe,
-  Webhook,
-  LayoutDashboard,
-  Fingerprint,
-  Activity,
-  FileSearch,
-  Sparkles,
-  Timer,
-  CheckCircle2,
-  AlertTriangle,
-  TrendingDown,
-  ShoppingBag,
-  Landmark,
-  Truck,
-  Stethoscope,
-  Factory,
-  Lock,
-  Server,
-  Key,
-  Layers,
-  Code2,
-  ScanSearch,
-  Compass,
-  Terminal,
-  RefreshCw
-} from 'lucide-react';
 
-export const integrations = [
-  { title: "ERP", icon: Building2 },
-  { title: "CRM", icon: Users },
-  { title: "WhatsApp", icon: MessageCircle },
-  { title: "E-mail", icon: Mail },
-  { title: "Chat", icon: MessageSquareText },
-  { title: "Bancos de dados", icon: Database },
-  { title: "Planilhas", icon: FileSpreadsheet },
-  { title: "Dashboards", icon: LayoutDashboard },
-  { title: "Autenticação", icon: Fingerprint },
-  { title: "Observabilidade", icon: Activity },
-  { title: "LLMs", icon: Sparkles }
+import { Integration, BentoItem, Step, Stat, Value, Sector, SecuritySpec } from './types';
+
+export const integrations: Integration[] = [
+  { title: "ERP", icon: "building-2" },
+  { title: "CRM", icon: "users" },
+  { title: "WhatsApp", icon: "message-circle" },
+  { title: "E-mail", icon: "mail" },
+  { title: "Chat", icon: "message-square-text" },
+  { title: "Bancos de dados", icon: "database" },
+  { title: "Planilhas", icon: "file-spreadsheet" },
+  { title: "Dashboards", icon: "layout-dashboard" },
+  { title: "Autenticação", icon: "fingerprint" },
+  { title: "Observabilidade", icon: "activity" },
+  { title: "LLMs", icon: "sparkles" }
 ];
 
-export const bentoItems = [
+export const bentoItems: BentoItem[] = [
   {
     id: "automation",
     title: "Automação de ponta a ponta",
     description: "Workflows que eliminam tarefas repetitivas e reduzem falhas operacionais.",
-    icon: Workflow,
+    icon: "workflow",
     colSpan: "md:col-span-2"
   },
   {
     id: "ai",
     title: "IA aplicada (sem hype)",
     description: "Modelos e agentes para acelerar atendimento, análise e execução.",
-    icon: BrainCircuit,
+    icon: "brain-circuit",
     colSpan: "md:col-span-1"
   },
   {
     id: "integration",
     title: "Integração sem fricção",
     description: "Conectamos sistemas legados e ferramentas modernas com segurança.",
-    icon: Network,
+    icon: "network",
     colSpan: "md:col-span-1"
   },
   {
     id: "data",
     title: "Dados e previsões",
     description: "Insights acionáveis com análise preditiva e painéis claros.",
-    icon: BarChart3,
+    icon: "bar-chart-3",
     colSpan: "md:col-span-1"
   },
   {
     id: "governance",
     title: "Governança e controle",
     description: "Permissões, limites, rastreabilidade e monitoramento contínuo.",
-    icon: ShieldCheck,
+    icon: "shield-check",
     colSpan: "md:col-span-1"
   },
   {
     id: "scale",
     title: "Escala com estabilidade",
     description: "Arquitetura modular, performance e evolução baseada em métricas.",
-    icon: Zap,
+    icon: "zap",
     colSpan: "md:col-span-3"
   }
 ];
@@ -123,54 +79,54 @@ export const solutionsCarouselItems = [
   }
 ];
 
-export const stepsHome = [
+export const stepsHome: Step[] = [
   {
     id: 1,
     title: "Imersão & Diagnóstico",
     text: "Mergulhamos nos dados e processos para encontrar o ROI oculto antes de escrever uma linha de código.",
-    icon: FileSearch,
+    icon: "file-search",
     image: "https://i.im.ge/2026/01/15/G9VOg1.Generated-Image-January-14-2026-6-08PM.jpeg" 
   },
   {
     id: 2,
     title: "Engenharia de Solução",
     text: "Arquitetura modular e segura. Desenvolvemos agentes e automações que se integram ao seu ecossistema atual.",
-    icon: Workflow,
+    icon: "workflow",
     image: "https://i.im.ge/2026/01/15/G9V7NT.Generated-Image-January-14-2026-6-11PM.jpeg"
   },
   {
     id: 3,
     title: "Escala & Evolução",
     text: "O go-live é apenas o início. Monitoramos anomalias e refinamos os modelos com base em dados reais.",
-    icon: TrendingUp,
+    icon: "trending-up",
     image: "https://i.im.ge/2026/01/15/G9V6N6.Generated-Image-January-14-2026-6-11PM-1.jpeg"
   }
 ];
 
-export const stats = [
+export const stats: Stat[] = [
   {
     label: "Redução de manualidade",
     value: "-80%",
     desc: "Menos tarefas repetitivas",
-    icon: TrendingDown
+    icon: "trending-down"
   },
   {
     label: "Precisão operacional",
     value: "99.9%",
     desc: "Menos falhas e retrabalho",
-    icon: CheckCircle2
+    icon: "check-circle-2"
   },
   {
     label: "Tempo de resposta",
     value: "24/7",
     desc: "Disponibilidade total",
-    icon: Timer
+    icon: "timer"
   },
   {
     label: "Visibilidade",
     value: "100%",
     desc: "Previsibilidade total",
-    icon: LayoutDashboard
+    icon: "layout-dashboard"
   }
 ];
 
@@ -295,56 +251,56 @@ export const comparison = {
 
 // --- Updated Copy for About Us Page ---
 
-export const methodology = [
+export const methodology: Step[] = [
   {
     step: "01",
     title: "Mapeamento & Diagnóstico",
     desc: "Não automatizamos o caos. Entendemos suas regras de negócio, gargalos e segurança antes de propor tecnologia.",
-    icon: ScanSearch
+    icon: "scan-search"
   },
   {
     step: "02",
     title: "Arquitetura da Solução",
     desc: "Desenhamos agentes e fluxos que se integram ao seu stack atual, focando em escalabilidade e menor fricção.",
-    icon: Compass
+    icon: "compass"
   },
   {
     step: "03",
     title: "Desenvolvimento Ágil",
     desc: "Sprints focados em entregáveis funcionais. Validamos cada etapa para garantir aderência ao processo real.",
-    icon: Terminal
+    icon: "terminal"
   },
   {
     step: "04",
     title: "Operação Assistida & Evolução",
     desc: "Monitoramento proativo pós-deploy. Usamos os dados gerados para refinar modelos e expandir capacidades.",
-    icon: RefreshCw
+    icon: "refresh-cw"
   }
 ];
 
-export const values = [
+export const values: Value[] = [
   { 
     title: "Antifragilidade", 
     description: "Sistemas que aprendem e evoluem com o erro.",
-    icon: ShieldCheck,
+    icon: "shield-check",
     image: "https://i.im.ge/2026/01/15/GmBdUW.Generated-Image-January-15-2026-3-08PM.jpeg"
   },
   { 
     title: "Transparência Radical", 
     description: "Código auditável e comunicação direta.",
-    icon: Layers,
+    icon: "layers",
     image: "https://i.im.ge/2026/01/15/GmBiWJ.Generated-Image-January-15-2026-3-09PM.jpeg"
   },
   { 
     title: "Pragmatismo Técnico", 
     description: "Tecnologia certa para o problema real.",
-    icon: Code2,
+    icon: "code-2",
     image: "https://i.im.ge/2026/01/15/GmB6aF.Generated-Image-January-15-2026-3-10PM.jpeg"
   },
   { 
     title: "Obsessão pelo Impacto", 
     description: "Eficiência operacional mensurável.",
-    icon: Target,
+    icon: "target",
     image: "https://i.im.ge/2026/01/15/GmBCZh.Generated-Image-January-15-2026-3-11PM.jpeg"
   }
 ];
@@ -355,53 +311,53 @@ export const team = [
   { role: "Líder de Engenharia", desc: "Expert em Cloud e Segurança. Garante que nossa infraestrutura escale sem comprometer dados." }
 ];
 
-export const sectors = [
+export const sectors: Sector[] = [
   {
     title: "Varejo & E-commerce",
     desc: "Previsão de demanda, otimização de estoque e SAC inteligente 24/7.",
-    icon: ShoppingBag
+    icon: "shopping-bag"
   },
   {
     title: "Finanças",
     desc: "Detecção de anomalias, automação de conciliação e análise de crédito.",
-    icon: Landmark
+    icon: "landmark"
   },
   {
     title: "Logística",
     desc: "Rastreamento preditivo, otimização de rotas e gestão automática de incidentes.",
-    icon: Truck
+    icon: "truck"
   },
   {
     title: "Saúde",
     desc: "Triagem de pacientes, agendamento automatizado e análise de documentos.",
-    icon: Stethoscope
+    icon: "stethoscope"
   },
   {
     title: "Indústria",
     desc: "Manutenção preditiva, controle de qualidade visual e automação de supply chain.",
-    icon: Factory
+    icon: "factory"
   },
 ];
 
-export const securitySpecs = [
+export const securitySpecs: SecuritySpec[] = [
   {
     title: "Criptografia Avançada",
     desc: "Dados criptografados em repouso e em trânsito (AES-256 e TLS 1.3).",
-    icon: Lock
+    icon: "lock"
   },
   {
     title: "Isolamento de Dados",
     desc: "Ambientes segregados garantem que seus dados nunca cruzem fronteiras indesejadas.",
-    icon: Server
+    icon: "server"
   },
   {
     title: "Controle de Acesso (RBAC)",
     desc: "Gestão granular de permissões e chaves de API com rotação automática.",
-    icon: Key
+    icon: "key"
   },
   {
     title: "Conformidade",
     desc: "Arquitetura desenhada seguindo princípios da LGPD e GDPR.",
-    icon: ShieldCheck
+    icon: "shield-check"
   }
 ];

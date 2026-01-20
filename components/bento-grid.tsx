@@ -1,15 +1,15 @@
-
 import React, { memo } from 'react';
 import { cn } from '../lib/cn';
 import { Reveal } from './reveal';
-import { LucideIcon } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import Icon, { IconName } from './Icon';
 import { motion } from 'framer-motion';
 
 interface BentoItem {
   id?: string;
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: IconName;
   colSpan: string;
 }
 
@@ -260,6 +260,7 @@ export const BentoGrid = memo(({ items }: BentoGridProps) => {
                   </p>
                   
                   <div className="w-full h-[1px] bg-white/10 mt-6 overflow-hidden rounded-full">
+                    <Icon name={item.icon} className="w-12 h-12 text-neutral-400 group-hover:text-accent transition-colors" />
                     <div className="w-0 h-full bg-accent group-hover:w-16 transition-all duration-700 ease-out" />
                   </div>
                 </div>
