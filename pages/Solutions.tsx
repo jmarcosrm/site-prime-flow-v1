@@ -4,8 +4,7 @@ import { Section, SectionHeading } from '../components/section';
 import { TabsSolutions } from '../components/tabs-solutions';
 import { Comparison } from '../components/comparison';
 import { Reveal } from '../components/reveal';
-import { ArrowRight, Sparkles, ShieldCheck, Zap } from 'lucide-react';
-import Icon from '../components/Icon';
+import { ArrowRight, Sparkles, Layers, ShieldCheck, Zap, Database, Activity, GitBranch, Lock, Scan, Fingerprint, UserCheck, Check, Key, Shield, FileLock, Server, Eye, Globe } from 'lucide-react';
 import { sectors, securitySpecs } from '../lib/data';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -235,7 +234,7 @@ const Solutions = () => {
                           
                           <div className="relative z-10 flex flex-col h-full">
                              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center mb-8 group-hover:bg-accent group-hover:border-accent group-hover:text-white transition-all duration-300 text-neutral-400 shadow-lg">
-                                <Icon name={sector.icon} size={28} strokeWidth={1.5} />
+                                <sector.icon size={28} strokeWidth={1.5} />
                              </div>
                              
                              <h3 className="text-2xl font-bold text-white mb-4">{sector.title}</h3>
@@ -308,7 +307,7 @@ const Solutions = () => {
                                 <div className="p-6 rounded-2xl bg-black backdrop-blur-md border border-white/10 hover:border-accent/40 transition-all duration-300 group/card">
                                    <div className="flex items-center gap-3 mb-3">
                                       <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover/card:bg-accent group-hover/card:text-white transition-colors duration-300">
-                                         <Icon name={spec.icon} size={16} className="text-neutral-300 group-hover/card:text-white" />
+                                         <spec.icon size={16} className="text-neutral-300 group-hover/card:text-white" />
                                       </div>
                                       <h4 className="text-white font-bold text-sm">{spec.title}</h4>
                                    </div>
