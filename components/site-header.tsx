@@ -79,7 +79,7 @@ export const SiteHeader = () => {
         <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="relative z-50 pointer-events-auto">
-            <img src="/images/logofooter.png" alt="Sua Marca" className="h-8" />
+            <img src="/images/logo barra de navegação.png" alt="Sua Marca" className="h-12" />
           </Link>
 
           {/* Desktop Nav - Floating Pill */}
@@ -115,7 +115,7 @@ export const SiteHeader = () => {
          <div className="w-full bg-[#050505]/90 backdrop-blur-2xl border border-white/10 rounded-full px-6 py-4 flex items-center justify-between shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)]">
             {/* Logo Mobile */}
             <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold tracking-tight text-white">
-              <img src="/images/logofooter.png" alt="Sua Marca" className="h-7" />
+              <img src="/images/logo barra de navegação.png" alt="Sua Marca" className="h-10" />
             </Link>
 
             {/* Hamburger Trigger */}
