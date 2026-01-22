@@ -32,6 +32,9 @@ const heroImages = [
 const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   
+  // Memoize data slices to prevent re-calculation on render
+  const firstRow = integrations.slice(0, Math.ceil(integrations.length / 2));
+  const secondRow = integrations.slice(Math.ceil(integrations.length / 2));
 
   const [currentBg, setCurrentBg] = useState(0);
 
@@ -238,10 +241,15 @@ const Home = () => {
           </Reveal>
         </div>
 
-        <div className="container mx-auto max-w-7xl px-0 md:px-6 relative z-10">
-          <Reveal width="100%">
-            <Marquee items={integrations} />
-          </Reveal>
+        <div className="container mx-auto max-w-5xl px-0 md:px-6 relative z-10">
+           <div className="flex flex-col gap-6">
+            <Reveal width="100%" delay={0.1}>
+              <Marquee items={firstRow} />
+            </Reveal>
+            <Reveal width="100%" delay={0.2}>
+              <Marquee items={secondRow} reverse />
+            </Reveal>
+           </div>
         </div>
       </div>
 

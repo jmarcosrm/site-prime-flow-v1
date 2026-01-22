@@ -1,70 +1,83 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { cn } from '../lib/cn';
+import { LucideIcon } from 'lucide-react';
 
 interface MarqueeItem {
   title: string;
+  icon: LucideIcon;
 }
 
 interface MarqueeProps {
   items: MarqueeItem[];
   className?: string;
   reverse?: boolean;
-  speed?: 'normal' | 'slow' | 'fast';
 }
 
-export const Marquee = ({ 
-  items, 
-  className, 
-  reverse = false, 
-  speed = 'normal' 
-}: MarqueeProps) => {
-
-  const duration = 
-    speed === 'slow' ? 80
-    : speed === 'fast' ? 40
-    : 60;
-
-  const marqueeVariants = {
-    animate: {
-      x: reverse ? ['0%', '-200%'] : ['-200%', '0%'],
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: 'loop',
-          duration: duration,
-          ease: 'linear',
-        },
-      },
-    },
-  };
+export const Marquee = ({ items, className, reverse = false }: MarqueeProps) => {
+  // Ensure we have enough items to fill a wide screen (4k)
+  // Duplicating the items 4 times inside each track ensures density.
+  const repeatedItems = [...items, ...items, ...items, ...items];
 
   return (
     <div 
-      className={cn("relative w-full overflow-hidden py-10", className)}
+      className={cn("relative flex overflow-hidden w-full group select-none py-10", className)}
       style={{
-        maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)'
+        // The mask creates the "appearing from nowhere" effect. 
+        maskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)'
       }}
     >
-      <motion.div
-        className="flex whitespace-nowrap"
-        variants={marqueeVariants}
-        animate="animate"
+      
+      {/* Track 1 */}
+      <div 
+        className={cn(
+          "flex shrink-0 gap-20 pr-20 items-center whitespace-nowrap min-w-full",
+          reverse ? "animate-marquee-reverse" : "animate-marquee",
+          "group-hover:[animation-play-state:paused]"
+        )}
       >
-        {/* Duplicating the content is necessary for a seamless loop */}
-        {[...items, ...items].map((item, idx) => (
+        {repeatedItems.map((item, idx) => (
           <div 
-            key={idx} 
-            className="flex items-center gap-3 cursor-default px-5"
+            key={`${item.title}-${idx}`} 
+            className="group/icon relative flex items-center justify-center transition-all duration-500 hover:scale-125 cursor-default"
+            title={item.title}
           >
-            <div className="w-2 h-2 rounded-full bg-accent" />
-            <span className="text-lg font-semibold text-neutral-300">
-              {item.title}
-            </span>
+            {/* Glow effect behind icon */}
+            <div className="absolute inset-0 bg-accent/40 blur-2xl rounded-full opacity-0 group-hover/icon:opacity-100 transition-opacity duration-500" />
+            
+            <item.icon 
+              className="w-10 h-10 md:w-12 md:h-12 text-muted/20 group-hover/icon:text-accent transition-all duration-500 relative z-10" 
+              strokeWidth={1.5}
+            />
           </div>
         ))}
-      </motion.div>
+      </div>
+
+      {/* Track 2 (Duplicate for seamless loop) */}
+      <div 
+        className={cn(
+          "flex shrink-0 gap-20 pr-20 items-center whitespace-nowrap min-w-full",
+          reverse ? "animate-marquee-reverse" : "animate-marquee",
+          "group-hover:[animation-play-state:paused]"
+        )}
+        aria-hidden="true"
+      >
+        {repeatedItems.map((item, idx) => (
+          <div 
+            key={`${item.title}-${idx}-dup`} 
+            className="group/icon relative flex items-center justify-center transition-all duration-500 hover:scale-125 cursor-default"
+            title={item.title}
+          >
+            {/* Glow effect behind icon */}
+            <div className="absolute inset-0 bg-accent/40 blur-2xl rounded-full opacity-0 group-hover/icon:opacity-100 transition-opacity duration-500" />
+            
+            <item.icon 
+              className="w-10 h-10 md:w-12 md:h-12 text-muted/20 group-hover/icon:text-accent transition-all duration-500 relative z-10" 
+              strokeWidth={1.5}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
