@@ -21,7 +21,7 @@ export const CtaSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/60 to-black opacity-90" />
         
         {/* Texture Overlay */}
-        <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.05] bg-[url('/images/noise.svg')] mix-blend-overlay pointer-events-none" />
 
         {/* 3. Content - Aligned to Right */}
         <div className="relative z-10 h-full flex flex-col justify-center items-end w-full p-8 md:p-16 lg:p-24 min-h-[500px] md:min-h-[600px]">

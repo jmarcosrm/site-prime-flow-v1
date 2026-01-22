@@ -4,8 +4,10 @@ import dynamicIconImports from 'lucide-react/dynamicIconImports';
 
 export type IconName = keyof typeof dynamicIconImports;
 
-interface IconProps extends LucideProps {
+interface IconProps extends Omit<LucideProps, 'ref'> {
   name: IconName;
+  className?: string;
+  strokeWidth?: number | string;
 }
 
 const Icon = ({ name, ...props }: IconProps) => {

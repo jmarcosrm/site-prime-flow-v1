@@ -140,7 +140,7 @@ export const SiteHeader = () => {
             className="fixed inset-0 z-[60] bg-[#020202] flex flex-col md:hidden overflow-hidden"
           >
             {/* Background Texture & Ambient Light */}
-            <div className="absolute inset-0 opacity-[0.06] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-0 mix-blend-overlay" />
+            <div className="absolute inset-0 opacity-[0.06] pointer-events-none bg-[url('/images/noise.svg')] z-0 mix-blend-overlay" />
             <div className="absolute top-[-20%] right-[-20%] w-[80vw] h-[80vw] bg-accent/10 rounded-full blur-[100px] pointer-events-none z-0" />
             <div className="absolute bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-blue-500/5 rounded-full blur-[80px] pointer-events-none z-0" />
 

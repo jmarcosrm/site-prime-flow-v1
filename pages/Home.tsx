@@ -107,7 +107,7 @@ const Home = () => {
            />
 
            {/* Grain Overlay */}
-           <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
+           <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-20 mix-blend-overlay bg-[url('/images/noise.svg')] bg-repeat" />
 
            {/* 3D Perspective Grid - NOW ENABLED ON MOBILE (Removed hidden md:block) */}
            {/* Adjusted scale for mobile to avoid extreme distortion */}

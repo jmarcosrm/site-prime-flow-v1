@@ -91,7 +91,7 @@ const About = () => {
            />
 
            {/* Grain Overlay */}
-           <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
+           <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-20 mix-blend-overlay bg-[url('/images/noise.svg')] bg-repeat" />
 
            {/* 3D Perspective Grid */}
            <div 
@@ -172,7 +172,7 @@ const About = () => {
          <div className="relative rounded-[3rem] bg-black border border-white/10 p-8 md:p-16 overflow-hidden group">
             
             {/* Background Effects */}
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay" />
+            <div className="absolute inset-0 bg-[url('/images/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay" />
             <div className="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
 
