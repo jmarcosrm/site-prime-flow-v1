@@ -78,8 +78,8 @@ export const SiteHeader = () => {
       >
         <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="relative z-50 pointer-events-auto">
-            <img src="/images/logo barra de navegação.png" alt="Sua Marca" className="h-12" />
+          <Link to="/" className="text-xl font-bold tracking-tighter hover:opacity-80 transition-opacity drop-shadow-md text-foreground relative z-50 pointer-events-auto">
+            Sua Marca<span className="text-accent">.</span>
           </Link>
 
           {/* Desktop Nav - Floating Pill */}
@@ -115,7 +115,7 @@ export const SiteHeader = () => {
          <div className="w-full bg-[#050505]/90 backdrop-blur-2xl border border-white/10 rounded-full px-6 py-4 flex items-center justify-between shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)]">
             {/* Logo Mobile */}
             <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold tracking-tight text-white">
-              <img src="/images/logo barra de navegação.png" alt="Sua Marca" className="h-10" />
+              Sua Marca<span className="text-accent">.</span>
             </Link>
 
             {/* Hamburger Trigger */}
@@ -140,7 +140,7 @@ export const SiteHeader = () => {
             className="fixed inset-0 z-[60] bg-[#020202] flex flex-col md:hidden overflow-hidden"
           >
             {/* Background Texture & Ambient Light */}
-            <div className="absolute inset-0 opacity-[0.06] pointer-events-none bg-[url('/images/noise.svg')] z-0 mix-blend-overlay" />
+            <div className="absolute inset-0 opacity-[0.06] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-0 mix-blend-overlay" />
             <div className="absolute top-[-20%] right-[-20%] w-[80vw] h-[80vw] bg-accent/10 rounded-full blur-[100px] pointer-events-none z-0" />
             <div className="absolute bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-blue-500/5 rounded-full blur-[80px] pointer-events-none z-0" />
 

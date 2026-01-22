@@ -65,7 +65,7 @@ const Solutions = () => {
        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute inset-0 bg-black" />
           <motion.div style={{ y: starsY }} className="absolute inset-0 opacity-40 will-change-transform">
-             <div className="absolute top-0 left-0 w-full h-[200vh] bg-[url('/images/noise.svg')] opacity-20" />
+             <div className="absolute top-0 left-0 w-full h-[200vh] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
           </motion.div>
        </div>
 
@@ -109,7 +109,7 @@ const Solutions = () => {
            />
 
            {/* Grain Overlay */}
-           <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-20 mix-blend-overlay bg-[url('/images/noise.svg')]" />
+           <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
            {/* 3D Perspective Grid */}
            <div 
@@ -278,7 +278,7 @@ const Solutions = () => {
                />
                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent opacity-100" />
                <div className="absolute inset-0 bg-black/20 mix-blend-multiply" />
-               <div className="absolute inset-0 opacity-[0.05] bg-[url('/images/noise.svg')] mix-blend-overlay pointer-events-none" />
+               <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay pointer-events-none" />
             </div>
 
             <div className="container mx-auto px-6 md:px-12 relative z-20 w-full h-full">
@@ -356,7 +356,7 @@ const Solutions = () => {
                
                {/* 2. Gradient Overlay - Darker on right for text readability */}
                <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/40 to-black/90" />
-               <div className="absolute inset-0 opacity-[0.05] bg-[url('/images/noise.svg')] mix-blend-overlay pointer-events-none" />
+               <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay pointer-events-none" />
             </div>
 
             {/* 3. Content - Aligned Right */}

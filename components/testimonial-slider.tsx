@@ -73,7 +73,7 @@ export const TestimonialSlider = ({ items }: TestimonialSliderProps) => {
       <div className="relative rounded-[2.5rem] bg-[#0A0A0A] border border-white/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden min-h-[450px] md:min-h-[400px] flex items-center">
         
         {/* Subtle Noise Texture */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/images/noise.svg')] mix-blend-overlay" />
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
 
         {/* Content Container */}
         <div className="relative z-10 w-full p-8 md:p-16">
