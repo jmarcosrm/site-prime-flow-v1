@@ -1,5 +1,5 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, memo } from 'react';
 import { useScroll, useTransform, motion, MotionValue } from 'framer-motion';
 import { cn } from '../lib/cn';
 import { Database, Cpu, Zap } from 'lucide-react';
@@ -18,7 +18,7 @@ const features: ScrollFeatureItem[] = [
     id: 1,
     title: "Ingestão de Dados",
     description: "Conectamos em qualquer fonte: SQL, NoSQL, APIs REST/GraphQL ou arquivos flat. Seus dados são normalizados em tempo real antes de tocar o modelo, garantindo consistência desde o primeiro byte.",
-    image: "https://images.unsplash.com/photo-1558494949-efc025793ad0?q=80&w=1600&auto=format&fit=crop",
+    image: "https://i.im.ge/2024/07/22/VqNew1.data-ingestion.jpeg",
     tags: ["ETL Real-time", "Data Lake", "Sanitização"],
     icon: Database
   },
@@ -26,7 +26,7 @@ const features: ScrollFeatureItem[] = [
     id: 2,
     title: "Processamento Neural",
     description: "O núcleo da inteligência. Agentes autônomos analisam o contexto, aplicam regras de negócio complexas e decidem o próximo passo com 99.9% de precisão, aprendendo com exceções.",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1600&auto=format&fit=crop",
+    image: "https://i.im.ge/2024/07/22/VqNew2.neural-processing.jpeg",
     tags: ["LLMs", "RAG", "Vector DB"],
     icon: Cpu
   },
@@ -34,7 +34,7 @@ const features: ScrollFeatureItem[] = [
     id: 3,
     title: "Ação & Resposta",
     description: "O insight vira ação. O sistema dispara webhooks, atualiza o CRM, envia e-mails ou notifica o time humano apenas quando a confiança é baixa ou a regra exige aprovação.",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1600&auto=format&fit=crop",
+    image: "https://i.im.ge/2024/07/22/VqNew3.action-response.jpeg",
     tags: ["Webhooks", "Automação", "API Gateway"],
     icon: Zap
   }
@@ -47,7 +47,7 @@ interface FeatureProps {
   progress: MotionValue<number>;
 }
 
-const FeatureText: React.FC<FeatureProps> = ({ item, i, count, progress }) => {
+const FeatureText: React.FC<FeatureProps> = memo(({ item, i, count, progress }) => {
   const step = 1 / count;
   const start = i * step;
   const end = (i + 1) * step;
@@ -114,9 +114,9 @@ const FeatureText: React.FC<FeatureProps> = ({ item, i, count, progress }) => {
       </div>
     </motion.div>
   );
-};
+});
 
-const FeatureImage: React.FC<FeatureProps> = ({ item, i, count, progress }) => {
+const FeatureImage: React.FC<FeatureProps> = memo(({ item, i, count, progress }) => {
   const step = 1 / count;
   const start = i * step;
   const end = (i + 1) * step;
@@ -167,7 +167,7 @@ const FeatureImage: React.FC<FeatureProps> = ({ item, i, count, progress }) => {
         <div className="absolute inset-0 bg-[#0A0A0A]/20 mix-blend-multiply" />
     </motion.div>
   );
-}
+});
 
 // --- Main Component ---
 

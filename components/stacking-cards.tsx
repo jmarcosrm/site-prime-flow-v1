@@ -1,5 +1,5 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, memo } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Workflow, TrendingUp, BrainCircuit, Activity, ShoppingCart, Package, Mail, AlertCircle, MessageSquare, MapPin, Sparkles, Zap } from 'lucide-react';
 import { cn } from '../lib/cn';
@@ -23,7 +23,7 @@ interface StackingCardsProps {
 }
 
 // --- 1. Automation Visual: Warehouse/Logistics ---
-const AutomationVisual = ({ color }: { color: string }) => {
+const AutomationVisual = memo(({ color }: { color: string }) => {
   return (
     <div className="h-full w-full flex items-center justify-center p-4 md:p-6 bg-black">
       <motion.div 
@@ -34,7 +34,7 @@ const AutomationVisual = ({ color }: { color: string }) => {
       >
          {/* Main Image */}
          <img 
-           src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop" 
+           src="https://i.im.ge/2024/07/21/VqVb2p.logistics-automation.jpeg" 
            alt="Logistics Automation"
            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
          />
@@ -61,10 +61,10 @@ const AutomationVisual = ({ color }: { color: string }) => {
       </motion.div>
     </div>
   );
-};
+});
 
 // --- 2. Predictive Visual: Product Trend ---
-const PredictiveVisual = ({ color }: { color: string }) => {
+const PredictiveVisual = memo(({ color }: { color: string }) => {
   return (
     <div className="h-full w-full flex items-center justify-center p-4 md:p-6 bg-black">
       <motion.div 
@@ -75,7 +75,7 @@ const PredictiveVisual = ({ color }: { color: string }) => {
       >
          {/* Main Image */}
          <img 
-           src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop" 
+           src="https://i.im.ge/2024/07/21/VqVFY0.high-demand-product.jpeg" 
            alt="High Demand Product"
            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
          />
@@ -118,10 +118,10 @@ const PredictiveVisual = ({ color }: { color: string }) => {
       </motion.div>
     </div>
   );
-};
+});
 
 // --- 3. NLP Visual: Customer Success ---
-const NLPVisual = ({ color }: { color: string }) => {
+const NLPVisual = memo(({ color }: { color: string }) => {
   return (
     <div className="h-full w-full flex items-center justify-center p-4 md:p-6 bg-black">
       <motion.div 
@@ -132,7 +132,7 @@ const NLPVisual = ({ color }: { color: string }) => {
       >
          {/* Main Image */}
          <img 
-           src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop" 
+           src="https://i.im.ge/2024/07/21/VqVUmx.happy-customer.jpeg" 
            alt="Happy Customer"
            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
          />
@@ -152,7 +152,7 @@ const NLPVisual = ({ color }: { color: string }) => {
             <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4 md:p-5 shadow-xl">
                <div className="flex items-center gap-3 mb-3">
                   <div className="w-8 h-8 rounded-full overflow-hidden border border-white/20">
-                     <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop" alt="User" className="w-full h-full object-cover" />
+                     <img src="https://i.im.ge/2024/07/21/VqV0yW.user-avatar.jpeg" alt="User" className="w-full h-full object-cover" />
                   </div>
                   <div>
                      <p className="text-xs text-purple-200 font-bold uppercase">Cliente</p>
@@ -167,10 +167,10 @@ const NLPVisual = ({ color }: { color: string }) => {
       </motion.div>
     </div>
   );
-};
+});
 
 
-const Card: React.FC<CardProps> = ({ i, title, description, bullets, progress, range, targetScale }) => {
+const Card: React.FC<CardProps> = memo(({ i, title, description, bullets, progress, range, targetScale }) => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -227,10 +227,7 @@ const Card: React.FC<CardProps> = ({ i, title, description, bullets, progress, r
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50 pointer-events-none" />
         
         {/* Subtle Noise Texture */}
-        <div 
-          className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay"
-          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
-        />
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('/images/noise.svg')]" />
         
         {/* Ambient Glow */}
         <div className={cn("absolute -top-[20%] -right-[20%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full blur-[120px] opacity-0 group-hover:opacity-40 transition-opacity duration-1000 pointer-events-none", theme.gradient)} />
@@ -308,7 +305,7 @@ const Card: React.FC<CardProps> = ({ i, title, description, bullets, progress, r
       </motion.div>
     </div>
   );
-};
+});
 
 export const StackingCards = ({ items }: StackingCardsProps) => {
   const container = useRef(null);
