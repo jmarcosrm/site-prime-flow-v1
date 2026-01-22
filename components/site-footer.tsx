@@ -20,8 +20,8 @@ export const SiteFooter = () => {
         <div className="relative z-10 flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
           
           <div className="space-y-6 max-w-sm">
-            <Link to="/" className="text-2xl font-bold tracking-tighter text-white">
-              Sua Marca<span className="text-accent">.</span>
+            <Link to="/">
+              <img src="/images/logofooter.png" alt="Sua Marca" className="h-8" />
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed">
               Transformando operações com inteligência artificial aplicada, governança e integração real. Tecnologia invisível, resultados visíveis.
