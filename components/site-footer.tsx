@@ -21,7 +21,7 @@ export const SiteFooter = () => {
           
           <div className="space-y-6 max-w-sm">
             <Link to="/">
-              <img src="/images/logofooter.png" alt="Sua Marca" className="h-8" />
+              <img src="/images/logofooter.png" alt="Sua Marca" className="h-16" />
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed">
               Transformando operações com inteligência artificial aplicada, governança e integração real. Tecnologia invisível, resultados visíveis.
